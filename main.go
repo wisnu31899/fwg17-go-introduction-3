@@ -12,29 +12,47 @@ type Student struct {
 	Score int
 }
 
+// func main() {
+// 	//soal 1
+// 	var wg sync.WaitGroup
+// 	wg.Add(4)
+
+// 	deret := deretBilangan{limit: 40}
+// 	go deret.prima(&wg)
+// 	go deret.ganjil(&wg)
+// 	go deret.genap(&wg)
+// 	go deret.fibonacci(&wg)
+
+// 	wg.Wait()
+// }
+
+// func main() {
+// 	//soal 2
+// 	ch := make(chan int)
+// 	var wg sync.WaitGroup
+
+// 	wg.Add(2)
+// 	go func() {
+// 		defer func() {
+// 			if r := recover(); r != nil {
+// 				fmt.Println("Recovered from panic:", r)
+// 			}
+// 		}()
+// 		Fibonacci(ch, &wg)
+// 	}()
+// 	go func() {
+// 		defer func() {
+// 			if r := recover(); r != nil {
+// 				fmt.Println("Recovered from panic:", r)
+// 			}
+// 		}()
+// 		GanjilGenap(ch, &wg)
+// 	}()
+
+// 	wg.Wait()
+// }
+
 func main() {
-	// //soal 1
-	// var wg sync.WaitGroup
-	// wg.Add(4)
-
-	// deret := deretBilangan{limit: 40}
-	// go deret.prima(&wg)
-	// go deret.ganjil(&wg)
-	// go deret.genap(&wg)
-	// go deret.fibonacci(&wg)
-
-	// wg.Wait()
-
-	// //soal 2
-	// ch := make(chan int)
-	// var wg sync.WaitGroup
-
-	// wg.Add(2)
-	// go Fibonacci(ch, &wg)
-	// go GanjilGenap(ch, &wg)
-
-	// wg.Wait()
-
 	//soal 3
 	students := []Student{
 		{Name: "Alice", Score: 85},
@@ -58,6 +76,7 @@ func main() {
 		close(resultCh)
 	}()
 
+	// Loop untuk menerima hasil dari channel resultCh
 	for result := range resultCh {
 		fmt.Println(result)
 	}
